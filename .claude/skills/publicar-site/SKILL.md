@@ -83,6 +83,19 @@ Antes de mandar para o cliente, abra o link e confira:
 Se algo estiver quebrado, conserte e publique de novo antes de mostrar. A
 primeira impressão do cliente com o link acontece uma vez só.
 
+### Passo 4b — Medir a velocidade
+
+Com o link no ar, jogue a URL no **`pagespeed.web.dev`** e olhe a **aba Mobile**.
+
+**A meta é 90 ou mais em Performance.** Abaixo disso, o próprio relatório lista o
+que corrigir — e quase sempre é imagem grande demais. Corrija, publique de novo,
+meça de novo.
+
+Guarde o resultado: **essa captura de tela é material de venda.** Rodar o teste
+no site do concorrente do seu cliente e mostrar os dois lado a lado é o argumento
+mais fácil de provar que existe nesse serviço. Vale para fechar o próximo
+cliente, e vale para justificar o preço deste.
+
 ### Passo 5 — Registrar
 
 Anote no `CLIENTE.md`: o link publicado, a data, e o que ficou pendente.

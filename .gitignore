@@ -8,10 +8,7 @@ desktop.ini
 .idea/
 *.swp
 
-# Dependências e build (quando um projeto usar React/Vite)
-node_modules/
-dist/
-build/
+# Publicação
 .vercel/
 
 # Segredos — nunca versionar

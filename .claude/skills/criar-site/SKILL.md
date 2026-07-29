@@ -140,40 +140,54 @@ restaurante ou prestador de serviço sem imagem parece incompleto.
 - Performance: `loading="lazy"` abaixo da dobra, `width`/`height` ou
   `aspect-ratio` para evitar o layout pulando, WebP/AVIF quando for foto real.
 
-## Decisão de tecnologia
+## Tecnologia — sempre HTML, sem exceção
 
-- **Página única / institucional** → HTML + CSS + JS puro. Rápido, fácil de
-  publicar, e é o padrão para negócio local.
-- **Site com mais interatividade** → React + Vite + Tailwind, com os tokens da
-  marca do cliente.
+**HTML + CSS + JavaScript puro. Um `index.html`, um `styles.css`, um `main.js`.**
+Sem framework, sem build, sem biblioteca externa. Ver `agencia/stack.md`.
 
-Ver `agencia/stack.md`. Na dúvida entre os dois, escolha o primeiro: quase todo
-negócio local é bem servido por ele, e é muito mais fácil de manter.
+Não pergunte se deve usar React, Tailwind ou qualquer outra coisa — a resposta é
+não. Site de negócio local nunca precisou disso, e não ter etapa de build é o que
+permite entregar rápido e manter o site vivo por anos sem nada quebrar sozinho.
 
-> **Componentes prontos como inspiração:** bibliotecas de efeitos (scroll,
-> cursor, animação) servem como **referência de ideia**. Mas **proteja a
-> arquitetura**: não cole um componente React num site em HTML puro — recrie o
-> efeito na tecnologia do projeto. A complexidade do projeto define a stack, não
-> o componente bonito que você encontrou.
+> **Efeito que você viu por aí é ideia, não código.** Se achar uma animação boa
+> numa biblioteca, **recrie** com as poucas linhas que ela exige. Colar
+> dependência num site estático troca segundos de trabalho por pontos de
+> desempenho e um ponto de falha permanente.
 
-### Movimento avançado (3D, scroll) — com critério
+## Desempenho é requisito, não bônus
 
-Dá para fazer sites com elementos 3D e animação guiada por scroll. Mas é faca de
-dois gumes:
+Meta: **90 ou mais em Performance no PageSpeed Insights, aba Mobile**
+(`pagespeed.web.dev`).
 
-- **Use quando o segmento pede "uau":** tecnologia, produto, imobiliário de
-  alto padrão, eventos, portfólio, lançamento. Ali o espetáculo vende.
-- **Evite em segmentos de confiança:** saúde, laboratório, jurídico, contábil,
-  financeiro. Ali credibilidade e **velocidade** valem mais que espetáculo — um
-  3D pesado parece deslocado e ainda derruba o desempenho. Prefira movimento
-  discreto.
-- **Desempenho e acessibilidade mandam:** nunca travar o scroll, sempre
-  respeitar `prefers-reduced-motion`, sempre ter alternativa no celular.
+Site lento perde visitante e perde posição no Google. E a velocidade é o
+argumento de venda mais fácil de provar que existe: abrir o teste com o site do
+concorrente ao lado do seu convence mais que qualquer apresentação.
 
-**Técnica do elemento-âncora (vale mesmo sem 3D):** pegue o elemento visual
-grande do hero e reaproveite-o na transição para a próxima seção — ele se move ou
-escala conforme o scroll e "costura" as duas. Dá coesão e sensação premium. Pode
-ser uma imagem, uma forma da marca ou uma ilustração leve.
+Aplique **enquanto constrói**, não depois:
+
+- **Imagem é onde os pontos se perdem.** WebP ou AVIF, redimensionada antes de
+  entrar no projeto. A imagem do topo leva `fetchpriority="high"` e **nunca**
+  `loading="lazy"` — é ela que o teste mede como carregamento principal. Todas
+  as demais levam `loading="lazy"`. Sempre com `width`/`height` ou
+  `aspect-ratio`, para nada pular na tela enquanto carrega.
+- **Fonte:** no máximo duas famílias, só os pesos usados, com `preconnect` e
+  `display=swap`.
+- **Zero dependência externa.** Cada script de fora é uma requisição a mais e um
+  risco a mais.
+- **Nada de vídeo com reprodução automática no topo, e nada de 3D.** O peso não
+  se paga em nenhum segmento de negócio local — e em saúde, jurídico ou contábil
+  o espetáculo ainda derruba a credibilidade.
+- **Movimento:** discreto, feito em CSS, respeitando `prefers-reduced-motion`, e
+  nunca travando a rolagem.
+
+Se vier abaixo de 90, o próprio relatório do PageSpeed diz o que corrigir —
+quase sempre é imagem.
+
+**Técnica do elemento-âncora:** pegue o elemento visual grande do topo e
+reaproveite-o na transição para a próxima seção — ele se move ou escala conforme
+a rolagem e "costura" as duas. Dá coesão e sensação premium, com custo quase
+zero de desempenho. Pode ser uma imagem, uma forma da marca ou uma ilustração
+leve.
 
 ## Fase 3 — Implementação
 
@@ -243,6 +257,9 @@ separa um resultado polido de um genérico.
 - [ ] Mobile **desenhado** (passada dedicada), não só encolhido
 - [ ] Movimento sutil nas seções que ficariam chapadas
 - [ ] **Página testada com o JavaScript desligado** — o conteúdo aparece
+- [ ] **90+ no PageSpeed Insights, aba Mobile** (medir depois de publicar)
+- [ ] Imagens em WebP/AVIF, redimensionadas, com `lazy` — exceto a do topo
+- [ ] Nenhuma biblioteca ou script externo além da fonte
 - [ ] Funciona no celular (menu, toque ≥44px, sem rolagem horizontal)
 - [ ] Botão de WhatsApp / contato funcionando
 - [ ] Mapa do Google quando for negócio com endereço
