@@ -1,0 +1,22 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Dependências e build (quando um projeto usar React/Vite)
+node_modules/
+dist/
+build/
+.vercel/
+
+# Segredos — nunca versionar
+.env
+.env.*
+*.pem
+credenciais*
+senhas*
