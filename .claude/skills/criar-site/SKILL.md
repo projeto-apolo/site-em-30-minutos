@@ -184,6 +184,17 @@ ser uma imagem, uma forma da marca ou uma ilustração leve.
 4. Micro-interações sutis (150–300ms). Um carregamento com elementos surgindo de
    forma escalonada vale mais que mil animações. Respeite
    `prefers-reduced-motion`.
+   - **O conteúdo nunca depende do JavaScript para aparecer.** Este é o erro
+     mais fácil de cometer aqui e o mais caro: você esconde tudo com
+     `opacity: 0` no CSS e deixa o JavaScript revelar ao rolar. Fica lindo — até
+     o JavaScript falhar, demorar numa rede ruim ou ser bloqueado. Aí o visitante
+     recebe **uma página em branco**, e nem você nem o cliente ficam sabendo.
+   - O jeito certo é inverter: o site nasce visível, e o JavaScript **liga** a
+     animação. Na prática, o JS marca a página (ex.: `document.documentElement
+     .classList.add('anim')`) como primeira instrução, e o CSS só esconde dentro
+     de `.anim`. Sem JavaScript, tudo aparece normalmente — só sem o efeito.
+   - **Teste sempre com o JavaScript desligado** antes de entregar. Se a página
+     ficar vazia, está errado, por mais bonita que esteja com ele ligado.
    - **Passada de "qualidade percebida" (pilar 8):** com a estrutura pronta,
      percorra **seção a seção** e ache as que ficaram chapadas. Para cada uma,
      acrescente **uma** interação sutil. Uma por seção, sempre discreta — se
@@ -231,6 +242,7 @@ separa um resultado polido de um genérico.
 - [ ] Hero com proposta de valor clara + botão visível
 - [ ] Mobile **desenhado** (passada dedicada), não só encolhido
 - [ ] Movimento sutil nas seções que ficariam chapadas
+- [ ] **Página testada com o JavaScript desligado** — o conteúdo aparece
 - [ ] Funciona no celular (menu, toque ≥44px, sem rolagem horizontal)
 - [ ] Botão de WhatsApp / contato funcionando
 - [ ] Mapa do Google quando for negócio com endereço
