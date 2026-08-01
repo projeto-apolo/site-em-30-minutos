@@ -52,7 +52,7 @@
 - **Logo:** [ ] (guardar em `assets/`)
 - **Cores da marca:** [ ]
 - **Fotos disponíveis:** [ ]
-- **Direção escolhida:** [ ] (preenchido na Fase 1 do `/criar-site`)
+- **Direção escolhida:** [ ] (preenchido na Fase 2 do `/criar-site`)
 
 ## Contrato
 
