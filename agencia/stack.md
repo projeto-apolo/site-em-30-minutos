@@ -67,13 +67,15 @@ imagem.
 
 ## Publicação
 
-- **Cloudflare Pages**, direto da pasta do site (`npx wrangler pages deploy`).
-  Sem GitHub, sem Vercel — uma conta gratuita só, reaproveitada em todos os
-  clientes.
+- **Cloudflare**, direto da pasta do site (`npx wrangler deploy`). Sem GitHub,
+  sem Vercel — uma conta gratuita só, configurada **de uma vez no `/instalar`**
+  (login + subdomínio `workers.dev`) e reaproveitada em todos os clientes.
 
-Um **projeto Cloudflare Pages por cliente**. Cada atualização do site exige
-rodar o comando de envio de novo (não há repositório conectado nem deploy
-automático) — ver `.claude/skills/publicar-site/`.
+Um **projeto por cliente**. Cada atualização do site exige rodar o comando de
+envio de novo (não há repositório conectado nem deploy automático) — ver
+`.claude/skills/publicar-site/`. O link sai no formato
+`<cliente-slug>.<subdomínio-da-agência>.workers.dev`, e no primeiro deploy de
+um projeto pode levar alguns minutos para ficar acessível.
 
 Domínio próprio é sempre pago e sempre decisão do cliente — ver
 `.claude/skills/publicar-site/`.

@@ -27,20 +27,34 @@ repositório e está com um pé atrás achando que isso é "coisa de programador
 - Se a pessoa não souber responder algo, ofereça um padrão e siga em frente.
   Nada aqui é irreversível — tudo pode ser ajustado depois.
 
-## Passo 1 — Conferir o ambiente
+## Passo 1 — Preparar o ambiente
 
-Antes de perguntar qualquer coisa, verifique em silêncio o que já está pronto:
+Quem está aqui provavelmente nunca usou nada disso. **Tudo que for preciso
+instalar ou configurar acontece agora, uma vez só** — para que na hora de
+criar e publicar o primeiro site não apareça nenhuma tela nova, conta nova ou
+etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
 
-- `git --version` — o Git está instalado?
-- `git config user.name` e `git config user.email` — já estão configurados?
+1. **Git** — `git --version`, e `git config user.name`/`user.email`
+   configurados. Se faltar, explique em uma linha ("é o que te trouxe a
+   estrutura inteira quando você clonou este repositório") e conduza a
+   instalação/configuração.
 
-Se o Git não estiver instalado ou configurado, resolva **antes** de continuar:
-explique em uma linha para que serve ("é o que te trouxe a estrutura inteira
-quando você clonou este repositório") e conduza a instalação/configuração.
+2. **Node.js** — `node -v`. Se faltar, oriente instalar a versão LTS em
+   `nodejs.org` (é o que faz o comando de publicação funcionar mais adiante).
 
-Não peça conta de Cloudflare agora. Isso só é necessário na hora de publicar, e
-a skill `/publicar-site` cuida disso. Pedir cadastro antes da hora é a forma
-mais rápida de perder alguém no começo.
+3. **Cloudflare** — é onde o site vai ficar no ar. Resolva tudo agora:
+   - Pergunte se a pessoa já tem conta. Se não, é gratuita e não pede cartão:
+     `dash.cloudflare.com/sign-up`.
+   - Rode `npx wrangler login` — abre uma aba do navegador para autorizar.
+     Confirme com `npx wrangler whoami` (mostra o e-mail e o ID da conta).
+   - **Registre o subdomínio `workers.dev`** — é obrigatório e só existe essa
+     janela para fazer uma vez. Abra
+     `https://dash.cloudflare.com/<ID da conta>/workers/subdomain` (o ID veio
+     do `whoami`) e oriente a pessoa a escolher um nome (sugestão: o nome da
+     agência). Sem isso, nenhum site publicado mais tarde vai abrir.
+
+   Explique em uma linha o porquê: "isso é coisa que só se faz uma vez — feito
+   agora, na hora de publicar o primeiro site é só um comando."
 
 ## Passo 2 — A entrevista
 
@@ -99,3 +113,7 @@ Um próximo passo claro vale mais que um catálogo completo.
 
 Se `agencia/identidade.md` já estiver preenchido, não recomece do zero. Mostre o
 que está lá hoje e pergunte o que mudou. Atualize só o que a pessoa apontar.
+
+Verifique rapidamente o Passo 1 mesmo assim (`npx wrangler whoami` continua
+logado? o subdomínio já foi registrado?) — se alguma coisa ainda estiver
+faltando, resolva antes de seguir, mesmo numa segunda execução.

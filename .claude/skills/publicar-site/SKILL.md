@@ -22,34 +22,28 @@ Conduza com calma. Um passo por vez, confirmando antes de seguir.
 3. Rode uma última conferência: links funcionando, botão de WhatsApp com o
    número certo, nenhum texto de preenchimento sobrando, nada inventado.
 
-## O caminho padrão: Cloudflare Pages, direto do arquivo
+## O caminho padrão: direto do arquivo pra Cloudflare
 
-**Sem GitHub, sem Vercel.** O site sobe direto da pasta local para o Cloudflare
-Pages, com uma conta só (gratuita), criada uma vez e reaproveentada em todos os
-clientes.
+**Sem GitHub, sem Vercel.** O site sobe direto da pasta local, com uma conta só
+(gratuita), criada e configurada **uma vez, no `/instalar`** — login e
+subdomínio já devem estar prontos antes de chegar aqui.
 
 O motivo de ser assim: **um passo a menos** para quem nunca programou. Não é
 preciso entender o que é um repositório nem conectar duas contas diferentes —
-é uma conta, um comando, um link.
+é um comando, um link.
 
 **A troca:** sem repositório, cada correção futura no site exige rodar o envio
 de novo (não é automático como seria com um repositório conectado). Para o
 ritmo deste método — publicar rápido e ajustar pontualmente — isso é aceitável;
 avise o operador dessa troca quando publicar pela primeira vez.
 
-### Passo 1 — Conta e ferramenta
+### Passo 1 — Conferir que o ambiente está pronto
 
-Verifique o que já existe antes de conduzir qualquer cadastro:
-
-- A pessoa já tem conta na **Cloudflare**? Se não, é gratuita — crie em
-  `dash.cloudflare.com/sign-up`. Não pede cartão para o plano usado aqui.
-- O comando de envio roda com `npx wrangler` (via Node.js, que já deve estar
-  instalado das aulas do Módulo 01) — não precisa instalar nada à parte, o
-  `npx` baixa a ferramenta na hora do primeiro uso.
-
-Ao rodar o envio pela primeira vez, o terminal vai pedir login: ele abre uma
-aba do navegador para a pessoa entrar com a conta Cloudflare e autorizar.
-Depois disso fica logado nas próximas vezes.
+Isso já devia ter sido resolvido no `/instalar`. Confirme rápido com
+`npx wrangler whoami` — se aparecer o e-mail da conta, está tudo certo. Se
+disser "not authenticated" ou o subdomínio `workers.dev` nunca foi registrado,
+**pare e rode o `/instalar` de novo** antes de publicar qualquer coisa — é mais
+rápido resolver ali, de forma guiada, do que no meio da publicação.
 
 ### Passo 2 — Publicar
 
@@ -57,20 +51,29 @@ Rode o envio apontando para a pasta do site do cliente, com um nome de projeto
 único (o nome vira parte do link):
 
 ```bash
-npx wrangler pages deploy clientes/<cliente>/site --project-name <cliente-slug>
+npx wrangler deploy clientes/<cliente>/site --project-name <cliente-slug>
 ```
 
-- **Um projeto Cloudflare Pages por cliente.** Nunca reaproveite o nome de
-  projeto de um cliente para outro (ver Regra Zero no `CLAUDE.md`).
+- **Um projeto por cliente.** Nunca reaproveite o nome de projeto de um
+  cliente para outro (ver Regra Zero no `CLAUDE.md`).
 - `<cliente-slug>` é o mesmo nome de pasta do cliente, em minúsculo e com
   hífen — mantém o link legível e fácil de rastrear.
+- Se o terminal mostrar um aviso de "Cloudflare Pages" ou sugerir outro
+  comando, ignore — `wrangler deploy` já é o caminho direto e correto, sem
+  passo a mais.
 
 Se for a primeira vez da pessoa, explique em uma linha o que está acontecendo:
 "estou mandando os arquivos do site direto para a nuvem da Cloudflare, que já
 devolve o link publicado".
 
-Em segundos sai um link parecido com `<cliente-slug>.pages.dev`. **Esse é o
-link para mandar ao cliente ver.**
+O link sai no formato `<cliente-slug>.<subdomínio-da-agência>.workers.dev`
+(o subdomínio é o que foi escolhido no `/instalar`). **Esse é o link para
+mandar ao cliente ver.**
+
+**No primeiro deploy de um projeto novo, o link pode demorar de 1 a 5 minutos
+para ficar acessível** (propagação). Se abrir e der erro na hora, não é
+sinal de que algo quebrou — espere um pouco e tente de novo antes de mexer em
+qualquer coisa.
 
 ### Passo 3 — Testar de verdade
 
@@ -110,14 +113,14 @@ Toda alteração (novo texto, ajuste de imagem, correção) precisa do mesmo
 comando de novo, com o **mesmo** `--project-name`:
 
 ```bash
-npx wrangler pages deploy clientes/<cliente>/site --project-name <cliente-slug>
+npx wrangler deploy clientes/<cliente>/site --project-name <cliente-slug>
 ```
 
 O link não muda — só o conteúdo é atualizado.
 
 ## Domínio próprio
 
-Se o cliente quer `nomedaempresa.com.br` em vez do link `.pages.dev`:
+Se o cliente quer `nomedaempresa.com.br` em vez do link `.workers.dev`:
 
 - **Se ele já tem domínio:** é uma configuração de apontamento, feita direto no
   painel do projeto na Cloudflare (Custom domains). Dá para conduzir, mas exige
@@ -148,6 +151,9 @@ Erro na publicação quase sempre é uma destas três coisas:
 - **Arquivo principal com nome errado** — a página inicial precisa se chamar
   `index.html`.
 - **Sessão da Cloudflare expirada** — rode `npx wrangler login` de novo.
+- **Link não abre logo depois de publicar** — normal no primeiro deploy de um
+  projeto (propagação); espere 1-5 minutos e teste de novo antes de mexer em
+  qualquer coisa.
 
 Diga qual é, em português, e resolva. Não mostre a mensagem de erro crua para
 alguém que não programa: traduza o que aconteceu e o que vai fazer a respeito.
