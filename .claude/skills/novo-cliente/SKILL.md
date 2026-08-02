@@ -47,6 +47,15 @@ Depois de ler, volte com o que você já entendeu e peça só o que faltou:
 Isso muda a natureza da conversa: em vez de um interrogatório, vira uma
 confirmação. O operador parece preparado, e o cliente responde bem menos coisa.
 
+**Aproveite a mesma passada para já baixar imagens reais.** Site atual,
+perfil do Google (Google Maps/Google Business) e Instagram costumam ter fotos
+de ambiente, fachada, equipe e produto que valem muito mais que qualquer banco
+de imagens depois. Baixe as boas — descarte ícone, sprite e logo de terceiro —
+e salve em `clientes/<nome>/assets/`. Onde a fonte for um site com muita
+página (institucional grande) e a varredura ficar pesada, isso pode esperar a
+Fase 1 do `/criar-site`; aqui o objetivo é pegar o que aparece de cara sem
+travar o cadastro.
+
 ## Passo 3 — O que precisa estar respondido
 
 Não pergunte tudo em sequência. Cubra estes pontos conversando, e pare quando
@@ -69,7 +78,8 @@ tiver o suficiente:
 - **Uma ação principal.** Se vierem três, escolha a que dá dinheiro.
 
 **A cara**
-- Logo, cores, fotos — o que já existe (guarde em `assets/`)
+- Logo, cores, fotos — o que já existe (guarde em `assets/`, ver a busca de
+  imagens acima)
 - Referências: sites que ele acha bonitos ou concorrentes que ele admira
 - O que ele **não** quer parecer
 
@@ -79,8 +89,10 @@ tiver o suficiente:
 
 ## Passo 4 — Marcar o que falta
 
-Preencha o `CLIENTE.md` com o que colheu e **liste explicitamente o que ficou
-pendente** na seção de próximos passos — em geral fotos boas e logo em alta.
+Preencha o `CLIENTE.md` com o que colheu, incluindo o que já foi encontrado
+em `assets/` (que imagem é, de onde veio), e **liste explicitamente o que
+ficou pendente** na seção de próximos passos — em geral fotos boas e logo em
+alta que não apareceram na busca.
 
 Nunca preencha um campo com suposição. Se o horário não foi confirmado, escreva
 "a confirmar", não um horário inventado. Um site no ar com informação errada é

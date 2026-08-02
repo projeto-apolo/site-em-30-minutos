@@ -82,6 +82,7 @@ região parou de oferecer.
 ## Publicação
 
 - **Link publicado:** ainda não publicado
+- **Nome do projeto na Cloudflare:** —
 - **Data:** —
 - **Domínio próprio:** ☑ Não (explicado o custo anual; ele decidiu começar com
   o link gratuito e avaliar depois)

@@ -1,16 +1,16 @@
 ---
 name: publicar-site
 description: >
-  Coloca o site do cliente no ar e devolve o link público. Use quando o operador
-  disser "publicar", "colocar no ar", "subir o site", "gerar o link", "mandar
-  pro cliente ver". Para antes de qualquer coisa que envolva domínio pago ou
-  dado de cartão — essa etapa é sempre do operador.
+  Coloca o site do cliente no ar via Cloudflare Pages e devolve o link público.
+  Use quando o operador disser "publicar", "colocar no ar", "subir o site",
+  "gerar o link", "mandar pro cliente ver". Para antes de qualquer coisa que
+  envolva domínio pago ou dado de cartão — essa etapa é sempre do operador.
 ---
 
 # Skill: Publicar Site
 
 É o momento em que o trabalho vira algo que existe no mundo. Também é onde mais
-gente trava — porque envolve criar contas e ver telas que nunca viu.
+gente trava — porque envolve criar conta e ver tela que nunca viu.
 
 Conduza com calma. Um passo por vez, confirmando antes de seguir.
 
@@ -22,55 +22,57 @@ Conduza com calma. Um passo por vez, confirmando antes de seguir.
 3. Rode uma última conferência: links funcionando, botão de WhatsApp com o
    número certo, nenhum texto de preenchimento sobrando, nada inventado.
 
-## O caminho padrão: GitHub → Vercel
+## O caminho padrão: Cloudflare Pages, direto do arquivo
 
-Duas contas gratuitas, criadas uma vez e reaproveitadas em todos os clientes:
+**Sem GitHub, sem Vercel.** O site sobe direto da pasta local para o Cloudflare
+Pages, com uma conta só (gratuita), criada uma vez e reaproveentada em todos os
+clientes.
 
-- **GitHub** — guarda os arquivos e o histórico
-- **Vercel** — hospeda e publica, de graça, com link próprio
+O motivo de ser assim: **um passo a menos** para quem nunca programou. Não é
+preciso entender o que é um repositório nem conectar duas contas diferentes —
+é uma conta, um comando, um link.
 
-O motivo de usar os dois juntos: a partir daí, **toda alteração que você fizer no
-site vai ao ar sozinha**. Você corrige um texto, salva, e em segundos está no ar.
-Sem esse caminho, cada ajuste vira um reenvio manual de arquivos.
+**A troca:** sem repositório, cada correção futura no site exige rodar o envio
+de novo (não é automático como seria com um repositório conectado). Para o
+ritmo deste método — publicar rápido e ajustar pontualmente — isso é aceitável;
+avise o operador dessa troca quando publicar pela primeira vez.
 
-### Passo 1 — Contas
+### Passo 1 — Conta e ferramenta
 
-Verifique o que já existe antes de mandar alguém criar conta:
+Verifique o que já existe antes de conduzir qualquer cadastro:
 
-- `git config user.name` e `git config user.email` estão configurados?
-- A pessoa já tem conta no GitHub? E na Vercel?
+- A pessoa já tem conta na **Cloudflare**? Se não, é gratuita — crie em
+  `dash.cloudflare.com/sign-up`. Não pede cartão para o plano usado aqui.
+- O comando de envio roda com `npx wrangler` (via Node.js, que já deve estar
+  instalado das aulas do Módulo 01) — não precisa instalar nada à parte, o
+  `npx` baixa a ferramenta na hora do primeiro uso.
 
-Se faltar alguma, conduza a criação. Ao criar a conta da **Vercel**, oriente a
-entrar **com o GitHub** — isso já conecta os dois e evita uma configuração extra
-depois.
+Ao rodar o envio pela primeira vez, o terminal vai pedir login: ele abre uma
+aba do navegador para a pessoa entrar com a conta Cloudflare e autorizar.
+Depois disso fica logado nas próximas vezes.
 
-Deixe claro: **as duas são gratuitas** e o plano grátis atende sites de negócio
-local com folga. Ninguém precisa colocar cartão para publicar.
+### Passo 2 — Publicar
 
-### Passo 2 — Subir para o GitHub
+Rode o envio apontando para a pasta do site do cliente, com um nome de projeto
+único (o nome vira parte do link):
 
-Crie o repositório para o site do cliente e envie os arquivos.
+```bash
+npx wrangler pages deploy clientes/<cliente>/site --project-name <cliente-slug>
+```
 
-Duas coisas importantes:
-
-- **Um repositório por cliente.** Nunca junte sites de clientes diferentes no
-  mesmo lugar (ver Regra Zero no `CLAUDE.md`).
-- **Repositório privado**, por padrão. É o site de um cliente pagante, não uma
-  peça de portfólio pública — a menos que ele autorize.
+- **Um projeto Cloudflare Pages por cliente.** Nunca reaproveite o nome de
+  projeto de um cliente para outro (ver Regra Zero no `CLAUDE.md`).
+- `<cliente-slug>` é o mesmo nome de pasta do cliente, em minúsculo e com
+  hífen — mantém o link legível e fácil de rastrear.
 
 Se for a primeira vez da pessoa, explique em uma linha o que está acontecendo:
-"estou mandando os arquivos do site para uma pasta na nuvem, que é de onde a
-Vercel vai publicar".
+"estou mandando os arquivos do site direto para a nuvem da Cloudflare, que já
+devolve o link publicado".
 
-### Passo 3 — Publicar na Vercel
-
-Conecte o repositório na Vercel e publique. Para um site em HTML puro não há
-configuração de build: é só apontar para a pasta certa e publicar.
-
-Em segundos sai um link parecido com `nome-do-projeto.vercel.app`. **Esse é o
+Em segundos sai um link parecido com `<cliente-slug>.pages.dev`. **Esse é o
 link para mandar ao cliente ver.**
 
-### Passo 4 — Testar de verdade
+### Passo 3 — Testar de verdade
 
 Antes de mandar para o cliente, abra o link e confira:
 
@@ -80,33 +82,47 @@ Antes de mandar para o cliente, abra o link e confira:
 - **Abra no celular.** É onde o cliente vai olhar primeiro.
 - As imagens aparecem (as que já existem)
 
-Se algo estiver quebrado, conserte e publique de novo antes de mostrar. A
+Se algo estiver quebrado, conserte e rode o envio de novo antes de mostrar. A
 primeira impressão do cliente com o link acontece uma vez só.
 
-### Passo 4b — Medir a velocidade
+### Passo 3b — Medir a velocidade
 
 Com o link no ar, jogue a URL no **`pagespeed.web.dev`** e olhe a **aba Mobile**.
 
 **A meta é 90 ou mais em Performance.** Abaixo disso, o próprio relatório lista o
-que corrigir — e quase sempre é imagem grande demais. Corrija, publique de novo,
-meça de novo.
+que corrigir — e quase sempre é imagem grande demais. Corrija, rode o envio de
+novo, meça de novo.
 
 Guarde o resultado: **essa captura de tela é material de venda.** Rodar o teste
 no site do concorrente do seu cliente e mostrar os dois lado a lado é o argumento
 mais fácil de provar que existe nesse serviço. Vale para fechar o próximo
 cliente, e vale para justificar o preço deste.
 
-### Passo 5 — Registrar
+### Passo 4 — Registrar
 
-Anote no `CLIENTE.md`: o link publicado, a data, e o que ficou pendente.
+Anote no `CLIENTE.md`: o link publicado, o nome do projeto na Cloudflare (para
+saber qual comando rodar numa próxima atualização), a data, e o que ficou
+pendente.
+
+### Atualizando o site depois de publicado
+
+Toda alteração (novo texto, ajuste de imagem, correção) precisa do mesmo
+comando de novo, com o **mesmo** `--project-name`:
+
+```bash
+npx wrangler pages deploy clientes/<cliente>/site --project-name <cliente-slug>
+```
+
+O link não muda — só o conteúdo é atualizado.
 
 ## Domínio próprio
 
-Se o cliente quer `nomedaempresa.com.br` em vez do link da Vercel:
+Se o cliente quer `nomedaempresa.com.br` em vez do link `.pages.dev`:
 
-- **Se ele já tem domínio:** é uma configuração de apontamento. Dá para conduzir,
-  mas exige acesso ao painel onde o domínio foi registrado — normalmente é o
-  próprio cliente ou o contador dele que tem.
+- **Se ele já tem domínio:** é uma configuração de apontamento, feita direto no
+  painel do projeto na Cloudflare (Custom domains). Dá para conduzir, mas exige
+  acesso ao painel onde o domínio foi registrado — normalmente é o próprio
+  cliente ou o contador dele que tem.
 - **Se ele não tem:** domínio é **pago** (algo em torno de R$ 40 a R$ 120 por
   ano, no Brasil). **Não compre nada em nome do cliente.** Explique o custo,
   deixe que ele decida e, se possível, que ele registre em nome dele — domínio
@@ -119,20 +135,19 @@ operador ou do cliente, nunca automatizados aqui.
 ## Quando é só uma demonstração
 
 Se o site é uma **demo descartável** — aquela que você monta para mostrar a um
-prospect antes de fechar — não precisa de repositório. Publique direto e trate
-como material de venda, sabendo que não vai ser mantido.
-
-Para cliente que pagou, use sempre o caminho completo. Site de cliente evolui, e
-sem histórico cada mudança futura é uma reconstrução.
+prospect antes de fechar — publique do mesmo jeito, só que sem se preocupar em
+manter o projeto depois. Trate como material de venda, sabendo que talvez você
+suba por cima dele mais tarde.
 
 ## Se der errado
 
 Erro na publicação quase sempre é uma destas três coisas:
 
-- **Caminho errado da pasta** — a Vercel está olhando para o lugar errado
+- **Caminho errado da pasta** — o comando está apontando para o lugar errado
+  (confira se está na raiz do workspace, não dentro da pasta do cliente).
 - **Arquivo principal com nome errado** — a página inicial precisa se chamar
-  `index.html`
-- **Conta não conectada** — GitHub e Vercel não estão falando
+  `index.html`.
+- **Sessão da Cloudflare expirada** — rode `npx wrangler login` de novo.
 
 Diga qual é, em português, e resolva. Não mostre a mensagem de erro crua para
 alguém que não programa: traduza o que aconteceu e o que vai fazer a respeito.

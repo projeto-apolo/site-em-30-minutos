@@ -26,12 +26,17 @@ endereço, horário de funcionamento, convênios/formas de pagamento, redes soci
 portal/login/agendamento se existir, diferenciais que o próprio cliente já escolheu
 destacar.
 
-## 2. Baixar as imagens reais
+## 2. Baixar as imagens reais que faltam
 
-As fotos que já existem no site do cliente valem ouro (ambiente real, equipe, produtos,
-logo em boa resolução). Baixe as boas — descarte ícone, sprite e logo de terceiro — e
-salve em `clientes/[nome-cliente]/assets/`. Anote no `CLIENTE.md` quais existem e onde
-ainda falta imagem (aí a Fase 2 decide: banco de imagens coerente ou gerada por IA).
+O `/novo-cliente` já deve ter baixado uma primeira leva na hora do cadastro. **Confira
+`clientes/[nome-cliente]/assets/` e o `CLIENTE.md` antes de sair baixando de novo** — o
+trabalho aqui é completar, não repetir. Se o cadastro já cobriu tudo que existe, pule
+este item.
+
+As fotos que ainda faltam (ambiente real, equipe, produtos, logo em boa resolução) valem
+ouro. Baixe as boas — descarte ícone, sprite e logo de terceiro — e salve em
+`clientes/[nome-cliente]/assets/`. Anote no `CLIENTE.md` quais existem e onde ainda falta
+imagem (aí a Fase 2 decide: banco de imagens ou gerada por IA).
 
 ## 3. Pesquisar fora do site
 

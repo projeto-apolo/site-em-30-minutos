@@ -67,11 +67,13 @@ imagem.
 
 ## Publicação
 
-- **GitHub** guarda os arquivos e o histórico
-- **Vercel** publica e hospeda (plano gratuito atende negócio local com folga)
+- **Cloudflare Pages**, direto da pasta do site (`npx wrangler pages deploy`).
+  Sem GitHub, sem Vercel — uma conta gratuita só, reaproveitada em todos os
+  clientes.
 
-Um repositório **privado por cliente**. Publicação conectada ao repositório, para
-que cada alteração salva vá ao ar sozinha.
+Um **projeto Cloudflare Pages por cliente**. Cada atualização do site exige
+rodar o comando de envio de novo (não há repositório conectado nem deploy
+automático) — ver `.claude/skills/publicar-site/`.
 
 Domínio próprio é sempre pago e sempre decisão do cliente — ver
 `.claude/skills/publicar-site/`.
@@ -79,15 +81,21 @@ Domínio próprio é sempre pago e sempre decisão do cliente — ver
 ## Ferramentas de trabalho
 
 - **VS Code** com a extensão do Claude
-- **Git** configurado com nome e e-mail
+- **Node.js** instalado (o `npx wrangler` do passo de publicação depende dele)
 
 ## Imagens
 
-- Foto real do cliente é sempre o ideal
-- Enquanto não chega, imagem gerada por IA é caminho válido para hero e seções
-- Onde não houver nem uma nem outra, placeholder marcado e elegante — nunca
-  retângulo cinza vazio
-- Formatos WebP ou AVIF para foto real; sempre com `alt`
+Ordem de prioridade (ver `.claude/skills/criar-site/fase-2-design.md`):
+
+1. Foto real do cliente é sempre o ideal.
+2. Faltando, pesquisar banco de imagens (Unsplash/Pexels) com termo específico
+   do segmento — e conferir de verdade que combina antes de usar.
+3. Se o banco não render nada coerente, imagem gerada por IA é caminho válido
+   para hero e seções.
+4. Onde não houver nenhuma das três, placeholder marcado e elegante — nunca
+   retângulo cinza vazio.
+
+Formatos WebP ou AVIF para foto real; sempre com `alt`.
 
 ---
 

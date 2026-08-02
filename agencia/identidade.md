@@ -8,7 +8,6 @@
 
 - **Nome:** [preenchido pelo /instalar]
 - **Nome da agência:** [preenchido pelo /instalar]
-- **Cidade / região de atuação:** [preenchido pelo /instalar]
 
 ## Posicionamento
 

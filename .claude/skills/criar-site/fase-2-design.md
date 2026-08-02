@@ -69,12 +69,21 @@ justificativa de cada escolha em 1 linha (por que essa paleta combina com o segm
 
 - Reserve áreas para: **hero** (ambiente ou composição), **sobre/fachada**, **equipe**
   (retratos), **galeria/serviços**, e fundo de seção quando couber.
-- Use as imagens reais baixadas na Fase 1. Onde faltar e for destaque (hero), imagem
-  gerada por IA é caminho válido: **escreva você mesmo o prompt** — você já tem o
-  contexto do projeto (paleta, direção, segmento) e acerta mais rápido que o operador
-  tentando descrever. Trate a imagem gerada com o mesmo cuidado de uma real (proporção,
-  `alt`, otimização).
-- Onde não houver nem foto real nem gerada ainda, planeje um **placeholder elegante e
+- Use primeiro as imagens reais já baixadas (no cadastro do `/novo-cliente` e, se houve,
+  na Fase 1). São sempre a melhor opção quando existem.
+- **Onde faltar, pesquise banco de imagens antes de qualquer outra saída.** Busque em
+  Unsplash/Pexels por termos específicos do segmento e do que a seção precisa (ex.:
+  "barbearia vintage cadeira couro", não só "barbearia"). Abra as opções e **confira de
+  verdade se combinam** com a direção escolhida (luz, enquadramento, pessoas/ambiente
+  compatíveis com o negócio) antes de colar a URL — imagem de banco genérica ou
+  descombinada denuncia site de template. Anote no `CLIENTE.md` quais entraram e de
+  onde vieram.
+- Só se o banco não render nada coerente pro caso (nicho muito específico, ambiente
+  incomum), gerar por IA é o próximo caminho: **escreva você mesmo o prompt** — você já
+  tem o contexto do projeto (paleta, direção, segmento) e acerta mais rápido que o
+  operador tentando descrever. Trate a imagem gerada com o mesmo cuidado de uma real
+  (proporção, `alt`, otimização).
+- Onde não houver real, de banco nem gerada ainda, planeje um **placeholder elegante e
   marcado** — área com `aspect-ratio` definido, cor da marca, ícone e rótulo do que vai
   ali ("Foto da fachada", "Equipe"). Nunca um retângulo cinza vazio.
 - Componentes de efeito premium (hero com scroll, cursor, reveal): se o operador trouxer

@@ -18,7 +18,8 @@ percebida** (7-8).
    mesmo tamanho.
 
 ## Conteúdo
-5. **Imagens** — reais do cliente quando dá; senão banco coerente ou geradas por IA com
+5. **Imagens** — nesta ordem: reais do cliente quando dá; senão banco de imagens
+   (Unsplash/Pexels) coerente com o segmento; só na falta desse, geradas por IA com
    capricho. Nunca uma imagem que não combina com o negócio. Hero com peso visual.
 6. **Texto (copy)** — contido e sensorial. Sem explicar demais, sem excesso de adjetivo, sem
    lorem ipsum. Frases concretas. Vem do `CLIENTE.md`, nada inventado.

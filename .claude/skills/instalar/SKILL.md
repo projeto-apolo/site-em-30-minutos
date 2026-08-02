@@ -35,16 +35,16 @@ Antes de perguntar qualquer coisa, verifique em silêncio o que já está pronto
 - `git config user.name` e `git config user.email` — já estão configurados?
 
 Se o Git não estiver instalado ou configurado, resolva **antes** de continuar:
-explique em uma linha para que serve ("é o que guarda o histórico do seu
-trabalho e permite publicar o site depois") e conduza a instalação/configuração.
+explique em uma linha para que serve ("é o que te trouxe a estrutura inteira
+quando você clonou este repositório") e conduza a instalação/configuração.
 
-Não peça conta de GitHub nem de Vercel agora. Isso só é necessário na hora de
-publicar, e a skill `/publicar-site` cuida disso. Pedir cadastro antes da hora é
-a forma mais rápida de perder alguém no começo.
+Não peça conta de Cloudflare agora. Isso só é necessário na hora de publicar, e
+a skill `/publicar-site` cuida disso. Pedir cadastro antes da hora é a forma
+mais rápida de perder alguém no começo.
 
 ## Passo 2 — A entrevista
 
-Cinco perguntas. Uma de cada vez, esperando a resposta antes da próxima.
+Quatro perguntas. Uma de cada vez, esperando a resposta antes da próxima.
 
 1. **"Como você se chama?"**
    O nome que vai assinar as propostas.
@@ -54,15 +54,11 @@ Cinco perguntas. Uma de cada vez, esperando a resposta antes da próxima.
    Muita gente trava aqui achando que precisa de uma marca pronta. Deixe claro
    que não precisa e que dá para mudar depois.
 
-3. **"Em que cidade ou região você pretende atender?"**
-   Importa de verdade: negócio local é vendido por proximidade, e o site precisa
-   falar da cidade certa.
-
-4. **"Que tipo de negócio você imagina atender primeiro?"**
+3. **"Que tipo de negócio você imagina atender primeiro?"**
    Se a pessoa não souber, mostre o que já está pronto em `agencia/nichos/` e
    sugira escolher um. Ter um ramo em mente deixa tudo mais concreto.
 
-5. **"Como você quer soar quando fala com um cliente — mais formal e técnico, ou
+4. **"Como você quer soar quando fala com um cliente — mais formal e técnico, ou
    mais próximo e direto?"**
    Uma frase basta. Isso define o tom das propostas e dos textos.
 
@@ -75,7 +71,6 @@ carrega mais contexto que campos soltos.
 Inclua:
 
 - Nome de quem opera e nome da agência
-- Cidade/região de atuação
 - Nicho de partida
 - Tom de voz, descrito de forma utilizável (não "profissional", mas "direto,
   sem jargão, explica o porquê antes do quê")
