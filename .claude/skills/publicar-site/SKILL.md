@@ -1,8 +1,8 @@
 ---
 name: publicar-site
 description: >
-  Coloca o site do cliente no ar via Cloudflare Pages e devolve o link público.
-  Use quando o operador disser "publicar", "colocar no ar", "subir o site",
+  Coloca o site do cliente no ar via Vercel e devolve o link público. Use
+  quando o operador disser "publicar", "colocar no ar", "subir o site",
   "gerar o link", "mandar pro cliente ver". Para antes de qualquer coisa que
   envolva domínio pago ou dado de cartão — essa etapa é sempre do operador.
 ---
@@ -22,58 +22,60 @@ Conduza com calma. Um passo por vez, confirmando antes de seguir.
 3. Rode uma última conferência: links funcionando, botão de WhatsApp com o
    número certo, nenhum texto de preenchimento sobrando, nada inventado.
 
-## O caminho padrão: direto do arquivo pra Cloudflare
+## O caminho padrão: direto do arquivo pra Vercel
 
-**Sem GitHub, sem Vercel.** O site sobe direto da pasta local, com uma conta só
-(gratuita), criada e configurada **uma vez, no `/instalar`** — login e
-subdomínio já devem estar prontos antes de chegar aqui.
+**Sem repositório por cliente.** O site sobe direto da pasta local, com uma
+conta só (gratuita), criada e configurada **uma vez, no `/instalar`** — login e
+token de API já devem estar prontos antes de chegar aqui.
 
 O motivo de ser assim: **um passo a menos** para quem nunca programou. Não é
-preciso entender o que é um repositório nem conectar duas contas diferentes —
-é um comando, um link.
+preciso criar um repositório novo para cada cliente nem sair conectando
+GitHub a cada projeto — é um comando, um link.
 
-**A troca:** sem repositório, cada correção futura no site exige rodar o envio
-de novo (não é automático como seria com um repositório conectado). Para o
-ritmo deste método — publicar rápido e ajustar pontualmente — isso é aceitável;
-avise o operador dessa troca quando publicar pela primeira vez.
+**A troca:** sem repositório conectado ao projeto, cada correção futura no
+site exige rodar o envio de novo (não é automático como seria com um push no
+GitHub). Para o ritmo deste método — publicar rápido e ajustar pontualmente —
+isso é aceitável; avise o operador dessa troca quando publicar pela primeira
+vez.
 
 ### Passo 1 — Conferir que o ambiente está pronto
 
 Isso já devia ter sido resolvido no `/instalar`. Confirme rápido com
-`npx wrangler whoami` — se aparecer o e-mail da conta, está tudo certo. Se
-disser "not authenticated" ou o subdomínio `workers.dev` nunca foi registrado,
-**pare e rode o `/instalar` de novo** antes de publicar qualquer coisa — é mais
-rápido resolver ali, de forma guiada, do que no meio da publicação.
+`npx vercel whoami` — se aparecer o nome da conta, está tudo certo. Se disser
+que não está autenticado, **pare e rode o `/instalar` de novo** antes de
+publicar qualquer coisa — é mais rápido resolver ali, de forma guiada, do que
+no meio da publicação.
 
 ### Passo 2 — Publicar
 
-Rode o envio apontando para a pasta do site do cliente, com um nome de projeto
-único (o nome vira parte do link):
+**Primeira publicação deste cliente** — vincula a pasta a um projeto novo, com
+nome único, e já publica:
 
 ```bash
-npx wrangler deploy clientes/<cliente>/site --project-name <cliente-slug>
+cd clientes/<cliente>/site
+npx vercel link --yes --project <cliente-slug>
+npx vercel deploy --prod --yes
+cd -
 ```
 
-- **Um projeto por cliente.** Nunca reaproveite o nome de projeto de um
-  cliente para outro (ver Regra Zero no `CLAUDE.md`).
-- `<cliente-slug>` é o mesmo nome de pasta do cliente, em minúsculo e com
-  hífen — mantém o link legível e fácil de rastrear.
-- Se o terminal mostrar um aviso de "Cloudflare Pages" ou sugerir outro
-  comando, ignore — `wrangler deploy` já é o caminho direto e correto, sem
-  passo a mais.
+- **Um projeto por cliente.** `<cliente-slug>` é o mesmo nome de pasta do
+  cliente, em minúsculo e com hífen — nunca reaproveite o nome de projeto de
+  um cliente para outro (ver Regra Zero no `CLAUDE.md`).
+- O `vercel link` cria uma pasta `.vercel/` dentro do site do cliente, com a
+  ligação ao projeto — é o que faz as próximas publicações desse mesmo cliente
+  caírem sempre no mesmo lugar. Essa pasta já está no `.gitignore`.
 
 Se for a primeira vez da pessoa, explique em uma linha o que está acontecendo:
-"estou mandando os arquivos do site direto para a nuvem da Cloudflare, que já
+"estou mandando os arquivos do site direto para a nuvem da Vercel, que já
 devolve o link publicado".
 
-O link sai no formato `<cliente-slug>.<subdomínio-da-agência>.workers.dev`
-(o subdomínio é o que foi escolhido no `/instalar`). **Esse é o link para
-mandar ao cliente ver.**
+O link sai no formato `<cliente-slug>.vercel.app` (ou parecido — a Vercel pode
+ajustar o nome se já existir um projeto igual em outra conta). **Esse é o link
+para mandar ao cliente ver.**
 
-**No primeiro deploy de um projeto novo, o link pode demorar de 1 a 5 minutos
-para ficar acessível** (propagação). Se abrir e der erro na hora, não é
-sinal de que algo quebrou — espere um pouco e tente de novo antes de mexer em
-qualquer coisa.
+O link da Vercel costuma ficar acessível em poucos segundos. Se abrir e der
+erro na hora, espere um pouco e tente de novo antes de mexer em qualquer
+coisa — não é sinal de que algo quebrou.
 
 ### Passo 3 — Testar de verdade
 
@@ -103,27 +105,30 @@ cliente, e vale para justificar o preço deste.
 
 ### Passo 4 — Registrar
 
-Anote no `CLIENTE.md`: o link publicado, o nome do projeto na Cloudflare (para
+Anote no `CLIENTE.md`: o link publicado, o nome do projeto na Vercel (para
 saber qual comando rodar numa próxima atualização), a data, e o que ficou
 pendente.
 
 ### Atualizando o site depois de publicado
 
-Toda alteração (novo texto, ajuste de imagem, correção) precisa do mesmo
-comando de novo, com o **mesmo** `--project-name`:
+Toda alteração (novo texto, ajuste de imagem, correção) roda o mesmo comando
+de publicação — como a pasta já está vinculada (`.vercel/` já existe),
+**não precisa rodar `vercel link` de novo**, só:
 
 ```bash
-npx wrangler deploy clientes/<cliente>/site --project-name <cliente-slug>
+cd clientes/<cliente>/site
+npx vercel deploy --prod --yes
+cd -
 ```
 
 O link não muda — só o conteúdo é atualizado.
 
 ## Domínio próprio
 
-Se o cliente quer `nomedaempresa.com.br` em vez do link `.workers.dev`:
+Se o cliente quer `nomedaempresa.com.br` em vez do link `.vercel.app`:
 
 - **Se ele já tem domínio:** é uma configuração de apontamento, feita direto no
-  painel do projeto na Cloudflare (Custom domains). Dá para conduzir, mas exige
+  painel do projeto na Vercel (Settings → Domains). Dá para conduzir, mas exige
   acesso ao painel onde o domínio foi registrado — normalmente é o próprio
   cliente ou o contador dele que tem.
 - **Se ele não tem:** domínio é **pago** (algo em torno de R$ 40 a R$ 120 por
@@ -150,10 +155,10 @@ Erro na publicação quase sempre é uma destas três coisas:
   (confira se está na raiz do workspace, não dentro da pasta do cliente).
 - **Arquivo principal com nome errado** — a página inicial precisa se chamar
   `index.html`.
-- **Sessão da Cloudflare expirada** — rode `npx wrangler login` de novo.
-- **Link não abre logo depois de publicar** — normal no primeiro deploy de um
-  projeto (propagação); espere 1-5 minutos e teste de novo antes de mexer em
-  qualquer coisa.
+- **Sessão da Vercel expirada** — rode `npx vercel login` de novo.
+- **Link não abre logo depois de publicar** — raro na Vercel, mas pode
+  acontecer no primeiro deploy de um projeto; espere um pouco e teste de novo
+  antes de mexer em qualquer coisa.
 
 Diga qual é, em português, e resolva. Não mostre a mensagem de erro crua para
 alguém que não programa: traduza o que aconteceu e o que vai fazer a respeito.

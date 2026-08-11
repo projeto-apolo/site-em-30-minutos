@@ -67,15 +67,14 @@ imagem.
 
 ## Publicação
 
-- **Cloudflare**, direto da pasta do site (`npx wrangler deploy`). Sem GitHub,
-  sem Vercel — uma conta gratuita só, configurada **de uma vez no `/instalar`**
-  (login + subdomínio `workers.dev`) e reaproveitada em todos os clientes.
+- **Vercel**, direto da pasta do site (`npx vercel deploy --prod`). Sem
+  repositório por cliente — uma conta gratuita só, configurada **de uma vez no
+  `/instalar`** (login + token de API) e reaproveitada em todos os clientes.
 
 Um **projeto por cliente**. Cada atualização do site exige rodar o comando de
 envio de novo (não há repositório conectado nem deploy automático) — ver
 `.claude/skills/publicar-site/`. O link sai no formato
-`<cliente-slug>.<subdomínio-da-agência>.workers.dev`, e no primeiro deploy de
-um projeto pode levar alguns minutos para ficar acessível.
+`<cliente-slug>.vercel.app`, e costuma ficar acessível em poucos segundos.
 
 Domínio próprio é sempre pago e sempre decisão do cliente — ver
 `.claude/skills/publicar-site/`.
@@ -83,7 +82,7 @@ Domínio próprio é sempre pago e sempre decisão do cliente — ver
 ## Ferramentas de trabalho
 
 - **VS Code** com a extensão do Claude
-- **Node.js** instalado (o `npx wrangler` do passo de publicação depende dele)
+- **Node.js** instalado (o `npx vercel` do passo de publicação depende dele)
 
 ## Imagens
 

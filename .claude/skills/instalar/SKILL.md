@@ -42,16 +42,17 @@ etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
 2. **Node.js** — `node -v`. Se faltar, oriente instalar a versão LTS em
    `nodejs.org` (é o que faz o comando de publicação funcionar mais adiante).
 
-3. **Cloudflare** — é onde o site vai ficar no ar. Resolva tudo agora:
+3. **Vercel** — é onde o site vai ficar no ar. Resolva tudo agora:
    - Pergunte se a pessoa já tem conta. Se não, é gratuita e não pede cartão:
-     `dash.cloudflare.com/sign-up`.
-   - Rode `npx wrangler login` — abre uma aba do navegador para autorizar.
-     Confirme com `npx wrangler whoami` (mostra o e-mail e o ID da conta).
-   - **Registre o subdomínio `workers.dev`** — é obrigatório e só existe essa
-     janela para fazer uma vez. Abra
-     `https://dash.cloudflare.com/<ID da conta>/workers/subdomain` (o ID veio
-     do `whoami`) e oriente a pessoa a escolher um nome (sugestão: o nome da
-     agência). Sem isso, nenhum site publicado mais tarde vai abrir.
+     `vercel.com/signup` (pode entrar com GitHub, Google ou e-mail — o que for
+     mais fácil).
+   - Rode `npx vercel login` — abre uma aba do navegador para autorizar.
+     Confirme com `npx vercel whoami` (mostra o nome da conta).
+   - **Gere um token de API** — é o que permite publicar direto do terminal, sem
+     abrir o painel a cada site novo. Oriente a pessoa a abrir
+     `vercel.com/account/tokens`, criar um token (nome sugerido: o nome da
+     agência) e colar o valor quando pedido. Guarde como variável de ambiente
+     `VERCEL_TOKEN` — nunca escreva o token direto num arquivo versionado.
 
    Explique em uma linha o porquê: "isso é coisa que só se faz uma vez — feito
    agora, na hora de publicar o primeiro site é só um comando."
@@ -114,6 +115,6 @@ Um próximo passo claro vale mais que um catálogo completo.
 Se `agencia/identidade.md` já estiver preenchido, não recomece do zero. Mostre o
 que está lá hoje e pergunte o que mudou. Atualize só o que a pessoa apontar.
 
-Verifique rapidamente o Passo 1 mesmo assim (`npx wrangler whoami` continua
-logado? o subdomínio já foi registrado?) — se alguma coisa ainda estiver
+Verifique rapidamente o Passo 1 mesmo assim (`npx vercel whoami` continua
+logado? o token de API ainda está salvo?) — se alguma coisa ainda estiver
 faltando, resolva antes de seguir, mesmo numa segunda execução.

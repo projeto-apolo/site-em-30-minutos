@@ -82,7 +82,7 @@ região parou de oferecer.
 ## Publicação
 
 - **Link publicado:** ainda não publicado
-- **Nome do projeto na Cloudflare:** —
+- **Nome do projeto na Vercel:** —
 - **Data:** —
 - **Domínio próprio:** ☑ Não (explicado o custo anual; ele decidiu começar com
   o link gratuito e avaliar depois)

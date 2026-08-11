@@ -66,7 +66,7 @@
 ## Publicação
 
 - **Link publicado:** [ ]
-- **Nome do projeto na Cloudflare:** [ ] (usar de novo pra atualizar o site)
+- **Nome do projeto na Vercel:** [ ] (usar de novo pra atualizar o site)
 - **Data:** [ ]
 - **Domínio próprio:** ⬜ Não | ⬜ Sim: [ ] (registrado em nome de quem?)
 
