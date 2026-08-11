@@ -115,5 +115,5 @@ Se `agencia/identidade.md` já estiver preenchido, não recomece do zero. Mostre
 que está lá hoje e pergunte o que mudou. Atualize só o que a pessoa apontar.
 
 Verifique rapidamente o Passo 1 mesmo assim (`npx vercel whoami` continua
-logado? o token de API ainda está salvo?) — se alguma coisa ainda estiver
-faltando, resolva antes de seguir, mesmo numa segunda execução.
+logado?) — se alguma coisa ainda estiver faltando, resolva antes de seguir,
+mesmo numa segunda execução.
