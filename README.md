@@ -14,22 +14,12 @@ cada site novo é só repetir o mesmo caminho.
 ## Ligando o sistema
 
 Você precisa de três coisas instaladas antes: o **VS Code**, a **extensão do
-Claude** dentro dele, e o **Git**. As aulas do Módulo 01 mostram cada uma. Depois
-disso, escolha um dos dois caminhos.
+Claude** dentro dele, e o **Git**. As aulas do Módulo 01 mostram cada uma.
 
-### Caminho 1 — Um prompt só (mais fácil)
+**Você não precisa de conta no GitHub.** Este repositório é público — o comando
+abaixo funciona sem cadastro, sem login, sem nada.
 
-Abra o Claude em qualquer pasta e cole exatamente isto:
-
-```
-Clona o https://github.com/projeto-apolo/site-em-30-minutos.git na pasta atual,
-entra nela e roda o /instalar.
-```
-
-Ele faz o resto: baixa a estrutura, entra na pasta e começa a entrevista de
-configuração. Você só responde.
-
-### Caminho 2 — Pelo terminal (mais previsível)
+### 1. Baixar a estrutura
 
 ```bash
 git clone https://github.com/projeto-apolo/site-em-30-minutos.git
@@ -37,8 +27,27 @@ cd site-em-30-minutos
 code .
 ```
 
-Na janela do VS Code que abrir: terminal integrado (Ctrl + ` no Windows,
-Cmd + ` no Mac) → `claude` → `/instalar`.
+### 2. Abrir a pasta no VS Code — o passo que não pode ser pulado
+
+O `code .` acima já abre a janela certa. Se você clonou de outro jeito, abra a
+pasta pelo menu: **File → Open Folder**, e escolha `site-em-30-minutos`.
+
+**Por que isso importa:** as skills (`/instalar`, `/novo-cliente`, `/criar-site`,
+`/publicar-site`) moram dentro desta pasta. O Claude só enxerga essas skills
+quando ela está aberta como projeto. **Se o Claude já estava aberto antes de você
+clonar, feche e abra de novo** — do contrário os comandos simplesmente não vão
+existir.
+
+### 3. Confirmar que as skills apareceram
+
+Na janela do VS Code: terminal integrado (Ctrl + ` no Windows, Cmd + ` no Mac) →
+digite `claude` → digite `/`.
+
+Se `/instalar` aparecer na lista, está tudo certo. **Rode `/instalar`.**
+
+Se **não** aparecer, é sempre a mesma causa: a pasta aberta não é a pasta clonada,
+ou o Claude foi aberto antes dela. Feche o Claude, confirme que a janela está na
+pasta certa, e abra de novo.
 
 ---
 

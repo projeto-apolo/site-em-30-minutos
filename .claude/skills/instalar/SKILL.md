@@ -44,8 +44,9 @@ etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
 
 3. **Vercel** — é onde o site vai ficar no ar. Resolva tudo agora:
    - Pergunte se a pessoa já tem conta. Se não, é gratuita e não pede cartão:
-     `vercel.com/signup` (pode entrar com GitHub, Google ou e-mail — o que for
-     mais fácil).
+     `vercel.com/signup`. Sugira cadastro por e-mail ou conta Google — a pessoa
+     não precisa ter conta no GitHub para usar este método, então não a empurre
+     para criar uma só por causa do cadastro.
    - Rode `npx vercel login` — abre uma aba do navegador para autorizar. É
      esse login (não um token separado) que autentica todo comando de
      publicação daqui pra frente.
