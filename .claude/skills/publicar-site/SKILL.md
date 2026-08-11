@@ -48,6 +48,15 @@ no meio da publicação.
 
 ### Passo 2 — Publicar
 
+**Antes de rodar qualquer coisa: confirme que existe `index.html`** na raiz de
+`clientes/<cliente>/site/`. Sem esse arquivo, a publicação **não dá erro** — ela
+sobe normalmente e o link abre com "The page could not be found" (404). É a
+falha mais traiçoeira desta etapa, porque parece sucesso no terminal.
+
+```bash
+ls clientes/<cliente>/site/index.html
+```
+
 **Primeira publicação deste cliente** — vincula a pasta a um projeto novo, com
 nome único, e já publica:
 
@@ -63,15 +72,35 @@ cd -
   um cliente para outro (ver Regra Zero no `CLAUDE.md`).
 - O `vercel link` cria uma pasta `.vercel/` dentro do site do cliente, com a
   ligação ao projeto — é o que faz as próximas publicações desse mesmo cliente
-  caírem sempre no mesmo lugar. Essa pasta já está no `.gitignore`.
+  caírem sempre no mesmo lugar. Ele também cria um `.env.local` e um
+  `.gitignore` ali dentro; os dois já ficam fora do controle de versão, é
+  comportamento normal da ferramenta e não precisa de ação.
 
 Se for a primeira vez da pessoa, explique em uma linha o que está acontecendo:
 "estou mandando os arquivos do site direto para a nuvem da Vercel, que já
 devolve o link publicado".
 
-O link sai no formato `<cliente-slug>.vercel.app` (ou parecido — a Vercel pode
-ajustar o nome se já existir um projeto igual em outra conta). **Esse é o link
-para mandar ao cliente ver.**
+### ⚠️ Qual link mandar para o cliente
+
+O terminal imprime **dois** endereços ao final. Eles não servem para a mesma
+coisa:
+
+- **`Production`** — endereço daquela publicação específica, com um código no
+  meio (`padaria-niu99bcqm-suaconta.vercel.app`). Muda a cada envio. **Não é
+  esse.**
+- **`Aliased`** — o endereço fixo do projeto. É o que continua funcionando
+  depois de cada atualização. **É esse que vai para o cliente.**
+
+**Nunca presuma que o link é `<cliente-slug>.vercel.app`.** Se esse nome já
+estiver em uso por outra pessoa na Vercel — e nomes comuns como
+`padaria-teste` costumam estar —, a Vercel gera outro, acrescentando uma
+palavra (`padaria-teste-lilac.vercel.app`). O endereço que você presumiu
+continua existindo, **mas é o site de um estranho**. Mandar esse link para o
+cliente significa mandar o site de outra pessoa.
+
+Sempre **leia o `Aliased` que apareceu no terminal** e abra esse link antes de
+enviar qualquer coisa. Se não abriu o link com os próprios olhos, ele não está
+pronto para ser enviado.
 
 O link da Vercel costuma ficar acessível em poucos segundos. Se abrir e der
 erro na hora, espere um pouco e tente de novo antes de mexer em qualquer
@@ -79,8 +108,13 @@ coisa — não é sinal de que algo quebrou.
 
 ### Passo 3 — Testar de verdade
 
-Antes de mandar para o cliente, abra o link e confira:
+Antes de mandar para o cliente, abra o link (o **`Aliased`**) e confira:
 
+- **A página inicial abre de verdade** — se aparecer "The page could not be
+  found", falta o `index.html` na raiz da pasta do site. Corrija e publique de
+  novo.
+- **É o site do seu cliente** — não o de um desconhecido (ver o aviso sobre o
+  endereço presumido, acima).
 - Todas as páginas carregam
 - O menu funciona
 - Os botões de WhatsApp e telefone abrem certo
@@ -149,12 +183,22 @@ suba por cima dele mais tarde.
 
 ## Se der errado
 
-Erro na publicação quase sempre é uma destas três coisas:
+**Atenção à falha silenciosa:** nem todo problema aparece como erro no
+terminal. O caso mais comum — falta de `index.html` — publica normalmente,
+mostra "Production" e "Aliased" como se tudo tivesse dado certo, e só aparece
+quando alguém abre o link e vê 404. Por isso o Passo 3 (abrir o link) não é
+opcional.
 
+Erro ou comportamento estranho na publicação quase sempre é uma destas coisas:
+
+- **Site abre com 404 ("The page could not be found")** — falta `index.html` na
+  raiz de `clientes/<cliente>/site/`, ou a página inicial está com outro nome.
+  Renomeie para `index.html` e publique de novo.
+- **O link mostra o site de outra pessoa** — você usou o endereço presumido
+  (`<cliente-slug>.vercel.app`) em vez do `Aliased` impresso no terminal. Pegue
+  o endereço certo e reenvie ao cliente.
 - **Caminho errado da pasta** — o comando está apontando para o lugar errado
-  (confira se está na raiz do workspace, não dentro da pasta do cliente).
-- **Arquivo principal com nome errado** — a página inicial precisa se chamar
-  `index.html`.
+  (confira que você entrou em `clientes/<cliente>/site` antes de publicar).
 - **Sessão da Vercel expirada** — rode `npx vercel login` de novo.
 - **Link não abre logo depois de publicar** — raro na Vercel, mas pode
   acontecer no primeiro deploy de um projeto; espere um pouco e teste de novo

@@ -73,8 +73,9 @@ imagem.
 
 Um **projeto por cliente**. Cada atualização do site exige rodar o comando de
 envio de novo (não há repositório conectado nem deploy automático) — ver
-`.claude/skills/publicar-site/`. O link sai no formato
-`<cliente-slug>.vercel.app`, e costuma ficar acessível em poucos segundos.
+`.claude/skills/publicar-site/`. O link fica acessível em poucos segundos, e é
+sempre o endereço **`Aliased`** que o terminal imprime — nunca um endereço
+presumido a partir do nome do cliente, que pode pertencer a outra pessoa.
 
 Domínio próprio é sempre pago e sempre decisão do cliente — ver
 `.claude/skills/publicar-site/`.
