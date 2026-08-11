@@ -14,8 +14,10 @@ cada site novo é só repetir o mesmo caminho.
 ## Ligando o sistema
 
 Você precisa de duas coisas instaladas antes: o **VS Code** e a **extensão do
-Claude** dentro dele — mais o **Git**, que o próprio Claude instala para você se
-faltar. A Aula 01.2 do Módulo 01 mostra os três.
+Claude** dentro dele. Por baixo, o método também usa o **Git** (traz esta
+estrutura) e o **Node** (publica seus sites) — mas você não precisa se preocupar
+com nenhum dos dois: o próprio Claude verifica e instala o que faltar. A Aula
+01.2 do Módulo 01 mostra tudo isso.
 
 **Você não precisa de conta no GitHub**, e **não vai digitar comando nenhum.**
 Quem traz a estrutura é o Claude — você só pede, em português.

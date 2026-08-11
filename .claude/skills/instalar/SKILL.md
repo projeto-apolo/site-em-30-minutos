@@ -39,8 +39,10 @@ etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
    pessoa). Confirme mesmo assim, e configure `git config user.name`/`user.email`
    se estiverem vazios.
 
-2. **Node.js** — `node -v`. Se faltar, oriente instalar a versão LTS em
-   `nodejs.org` (é o que faz o comando de publicação funcionar mais adiante).
+2. **Node.js** — `node -v`. Também deve ter sido resolvido na Aula 01.2, junto
+   com o Git. Confirme mesmo assim: **sem Node, o login da Vercel logo abaixo e
+   toda a publicação mais adiante simplesmente não rodam.** Se faltar, conduza a
+   instalação da versão LTS em `nodejs.org` antes de seguir.
 
 3. **Vercel** — é onde o site vai ficar no ar. Resolva tudo agora:
    - Pergunte se a pessoa já tem conta. Se não, é gratuita e não pede cartão:
