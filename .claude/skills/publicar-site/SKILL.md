@@ -25,8 +25,8 @@ Conduza com calma. Um passo por vez, confirmando antes de seguir.
 ## O caminho padrão: direto do arquivo pra Vercel
 
 **Sem repositório por cliente.** O site sobe direto da pasta local, com uma
-conta só (gratuita), criada e configurada **uma vez, no `/instalar`** — login e
-token de API já devem estar prontos antes de chegar aqui.
+conta só (gratuita), criada e configurada **uma vez, no `/instalar`** — o
+login já deve estar feito antes de chegar aqui.
 
 O motivo de ser assim: **um passo a menos** para quem nunca programou. Não é
 preciso criar um repositório novo para cada cliente nem sair conectando

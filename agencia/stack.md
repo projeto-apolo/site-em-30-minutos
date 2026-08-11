@@ -68,8 +68,8 @@ imagem.
 ## Publicação
 
 - **Vercel**, direto da pasta do site (`npx vercel deploy --prod`). Sem
-  repositório por cliente — uma conta gratuita só, configurada **de uma vez no
-  `/instalar`** (login + token de API) e reaproveitada em todos os clientes.
+  repositório por cliente — uma conta gratuita só, com login feito **de uma
+  vez no `/instalar`** e reaproveitada em todos os clientes.
 
 Um **projeto por cliente**. Cada atualização do site exige rodar o comando de
 envio de novo (não há repositório conectado nem deploy automático) — ver

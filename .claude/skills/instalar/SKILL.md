@@ -46,13 +46,12 @@ etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
    - Pergunte se a pessoa já tem conta. Se não, é gratuita e não pede cartão:
      `vercel.com/signup` (pode entrar com GitHub, Google ou e-mail — o que for
      mais fácil).
-   - Rode `npx vercel login` — abre uma aba do navegador para autorizar.
-     Confirme com `npx vercel whoami` (mostra o nome da conta).
-   - **Gere um token de API** — é o que permite publicar direto do terminal, sem
-     abrir o painel a cada site novo. Oriente a pessoa a abrir
-     `vercel.com/account/tokens`, criar um token (nome sugerido: o nome da
-     agência) e colar o valor quando pedido. Guarde como variável de ambiente
-     `VERCEL_TOKEN` — nunca escreva o token direto num arquivo versionado.
+   - Rode `npx vercel login` — abre uma aba do navegador para autorizar. É
+     esse login (não um token separado) que autentica todo comando de
+     publicação daqui pra frente.
+   - Confirme com `npx vercel whoami` (mostra o nome da conta) e, se quiser
+     mostrar que já está tudo pronto, rode `npx vercel project ls` — a lista
+     vem vazia, e está certo que esteja assim por enquanto.
 
    Explique em uma linha o porquê: "isso é coisa que só se faz uma vez — feito
    agora, na hora de publicar o primeiro site é só um comando."
