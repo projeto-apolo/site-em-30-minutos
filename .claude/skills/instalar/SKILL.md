@@ -34,10 +34,10 @@ instalar ou configurar acontece agora, uma vez só** — para que na hora de
 criar e publicar o primeiro site não apareça nenhuma tela nova, conta nova ou
 etapa surpresa no meio do caminho. Resolva nesta ordem, um item de cada vez:
 
-1. **Git** — `git --version`, e `git config user.name`/`user.email`
-   configurados. Se faltar, explique em uma linha ("é o que te trouxe a
-   estrutura inteira quando você clonou este repositório") e conduza a
-   instalação/configuração.
+1. **Git** — `git --version`. Se você está lendo isto, ele quase certamente já
+   está instalado (foi o que trouxe esta estrutura para o computador da
+   pessoa). Confirme mesmo assim, e configure `git config user.name`/`user.email`
+   se estiverem vazios.
 
 2. **Node.js** — `node -v`. Se faltar, oriente instalar a versão LTS em
    `nodejs.org` (é o que faz o comando de publicação funcionar mais adiante).

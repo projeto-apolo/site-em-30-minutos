@@ -13,39 +13,50 @@ cada site novo é só repetir o mesmo caminho.
 
 ## Ligando o sistema
 
-Você precisa de três coisas instaladas antes: o **VS Code**, a **extensão do
-Claude** dentro dele, e o **Git**. As aulas do Módulo 01 mostram cada uma.
+Você precisa de duas coisas instaladas antes: o **VS Code** e a **extensão do
+Claude** dentro dele. As aulas do Módulo 01 mostram as duas.
 
-**Você não precisa de conta no GitHub.** Este repositório é público — o comando
-abaixo funciona sem cadastro, sem login, sem nada.
+**Você não precisa de conta no GitHub**, e **não vai digitar comando nenhum.**
+Quem traz a estrutura é o Claude — você só pede, em português.
 
-### 1. Baixar a estrutura
+### 1. Escolher onde a agência vai morar
 
-```bash
-git clone https://github.com/projeto-apolo/site-em-30-minutos.git
-cd site-em-30-minutos
-code .
+Abra o VS Code e, em **File → Open Folder**, escolha a pasta onde a agência vai
+ficar guardada: Documentos, Área de Trabalho, onde preferir. É dentro dela que a
+estrutura vai aparecer.
+
+### 2. Pedir ao Claude para trazer a estrutura
+
+Abra a extensão do Claude na lateral e peça, com suas palavras:
+
+```
+Clone o repositório https://github.com/projeto-apolo/site-em-30-minutos
+aqui nesta pasta.
 ```
 
-### 2. Abrir a pasta no VS Code — o passo que não pode ser pulado
+Autorize quando ele pedir permissão para executar. Ele avisa quando terminar.
 
-O `code .` acima já abre a janela certa. Se você clonou de outro jeito, abra a
-pasta pelo menu: **File → Open Folder**, e escolha `site-em-30-minutos`.
+*Se ele disser que falta o **Git** — o programa que faz o download —, peça que
+ele te oriente a instalar, e repita o pedido acima.*
+
+### 3. Abrir a pasta nova — o passo que não pode ser pulado
+
+A estrutura chegou como uma **pasta nova** dentro da que você abriu. Vá em
+**File → Open Folder** e escolha essa pasta nova.
 
 **Por que isso importa:** as skills (`/instalar`, `/novo-cliente`, `/criar-site`,
-`/publicar-site`) moram dentro desta pasta. O Claude só enxerga essas skills
-quando ela está aberta como projeto. **Se o Claude já estava aberto antes de você
-clonar, feche e abra de novo** — do contrário os comandos simplesmente não vão
-existir.
+`/publicar-site`) moram dentro dela. O Claude só enxerga essas skills quando ela
+está aberta como projeto — não basta ela existir no computador. **Se o Claude já
+estava aberto, feche e abra de novo**, do contrário os comandos simplesmente não
+vão existir.
 
-### 3. Confirmar que as skills apareceram
+### 4. Confirmar que as skills apareceram
 
-Na janela do VS Code: terminal integrado (Ctrl + ` no Windows, Cmd + ` no Mac) →
-digite `claude` → digite `/`.
+Com a pasta nova aberta, abra o Claude e digite `/`.
 
 Se `/instalar` aparecer na lista, está tudo certo. **Rode `/instalar`.**
 
-Se **não** aparecer, é sempre a mesma causa: a pasta aberta não é a pasta clonada,
+Se **não** aparecer, é sempre a mesma causa: a pasta aberta não é a pasta nova,
 ou o Claude foi aberto antes dela. Feche o Claude, confirme que a janela está na
 pasta certa, e abra de novo.
 
